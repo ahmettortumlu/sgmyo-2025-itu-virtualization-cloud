@@ -4,7 +4,7 @@
 
 ---
 
-## 📌 Proje Tanımı
+## Proje Tanımı
 
 Bu dönem ödevinde, **Python Flask** ile geliştirilmiş bir DNS sorgulama web uygulamasını **Amazon Web Services (AWS)** üzerinde production ortamına deploy edeceksiniz. Uygulama, kullanıcıların domain adreslerini sorgulamasına ve sonuçların MongoDB veritabanına kaydedilmesine olanak sağlar.
 
@@ -12,47 +12,47 @@ Projenin amacı, modern bulut altyapısı, network güvenliği, containerization
 
 ---
 
-## 🎯 Öğrenme Hedefleri
+## Öğrenme Hedefleri
 
 Bu proje sonunda aşağıdaki yetkinliklere sahip olacaksınız:
 
-- ✅ AWS VPC, Subnet, Route Table gibi network bileşenlerini yapılandırma
-- ✅ Public ve Private subnet ayrımı yaparak güvenli network mimarisi tasarlama
-- ✅ Application Load Balancer (ALB) ve Auto Scaling Group kullanımı
-- ✅ Docker ve Docker Compose ile containerization
-- ✅ AWS güvenlik servislerini (Security Groups, IAM, WAF, vb.) entegre etme
-- ✅ MongoDB veritabanını private subnet'te güvenli şekilde deploy etme
-- ✅ CloudWatch ile monitoring ve alarm yönetimi
-- ✅ Production ortamında troubleshooting ve problem çözme
+- AWS VPC, Subnet, Route Table gibi network bileşenlerini yapılandırma
+- Public ve Private subnet ayrımı yaparak güvenli network mimarisi tasarlama
+- Application Load Balancer (ALB) ve Auto Scaling Group kullanımı
+- Docker ve Docker Compose ile containerization
+- AWS güvenlik servislerini (Security Groups, IAM, WAF, vb.) entegre etme
+- MongoDB veritabanını private subnet'te güvenli şekilde deploy etme
+- CloudWatch ile monitoring ve alarm yönetimi
+- Production ortamında troubleshooting ve problem çözme
 
 ---
 
-## 📋 Proje Gereksinimleri
+## Proje Gereksinimleri
 
 ### 1. Uygulama Özellikleri
 
 Geliştirilecek/Deploy edilecek uygulama:
 
 #### **Backend (Python Flask)**
-- ✅ Domain adreslerini sorgulayan web arayüzü
-- ✅ DNS lookup işlemi gerçekleştirme (A kayıtları)
-- ✅ Sorgu sonuçlarını MongoDB'ye kaydetme
-- ✅ RESTful API endpoint'leri
-- ✅ Health check endpoint'i (`/health`)
-- ✅ Ortam değişkenleri ile yapılandırma
+- Domain adreslerini sorgulayan web arayüzü
+- DNS lookup işlemi gerçekleştirme (A kayıtları)
+- Sorgu sonuçlarını MongoDB'ye kaydetme
+- RESTful API endpoint'leri
+- Health check endpoint'i (`/health`)
+- Ortam değişkenleri ile yapılandırma
 
 #### **Veritabanı (MongoDB)**
-- ✅ Private subnet'te konumlandırılmış olmalı
-- ✅ Docker container olarak çalışmalı
-- ✅ Persistent volume kullanmalı
-- ✅ Authentication aktif olmalı
-- ✅ Mongo Express admin arayüzü (opsiyonel, private erişim)
+- Private subnet'te konumlandırılmış olmalı
+- Docker container olarak çalışmalı
+- Persistent volume kullanmalı
+- Authentication aktif olmalı
+- Mongo Express admin arayüzü (opsiyonel, private erişim)
 
 #### **Containerization**
-- ✅ Docker ve Docker Compose kullanımı zorunlu
-- ✅ Production-ready Dockerfile
-- ✅ Health check mekanizmaları
-- ✅ Logging yapılandırması
+- Docker ve Docker Compose kullanımı zorunlu
+- Production-ready Dockerfile
+- Health check mekanizmaları
+- Logging yapılandırması
 
 ---
 
@@ -77,10 +77,10 @@ CIDR: 10.0.0.0/16
 | Private-2 | 10.0.12.0/24 | us-east-1b | Private | MongoDB Secondary (Opsiyonel) |
 
 **Network Bileşenleri**
-- ✅ Internet Gateway (IGW)
-- ✅ NAT Gateway (minimum 1, ideali 2 - her AZ için)
-- ✅ Route Tables (Public ve Private için ayrı)
-- ✅ VPC Flow Logs (CloudWatch'a gönderilmeli)
+- Internet Gateway (IGW)
+- NAT Gateway (minimum 1, ideali 2 - her AZ için)
+- Route Tables (Public ve Private için ayrı)
+- VPC Flow Logs (CloudWatch'a gönderilmeli)
 
 #### **2.2 Compute Resources**
 
@@ -232,7 +232,7 @@ Aşağıdaki servislerden **EN AZ 3 TANESINI** kullanmalısınız:
 
 ---
 
-## 📦 Teslim Edilecekler
+## Teslim Edilecekler
 
 ### 1. GitHub Repository (Zorunlu)
 
@@ -315,7 +315,7 @@ Aşağıdaki bileşenleri içeren profesyonel bir mimari diyagram:
 
 ---
 
-## 📊 Puanlama Kriterleri
+## Puanlama Kriterleri
 
 ### Temel Gereksinimler (70 Puan)
 
@@ -350,7 +350,7 @@ Aşağıdaki bileşenleri içeren profesyonel bir mimari diyagram:
 
 ---
 
-## 🌟 Bonus Puanlar (Toplam +25 Puan)
+## Bonus Puanlar (Toplam +25 Puan)
 
 | Bonus | Puan | Açıklama |
 |-------|------|----------|
@@ -365,7 +365,7 @@ Aşağıdaki bileşenleri içeren profesyonel bir mimari diyagram:
 
 ---
 
-## 📅 Önemli Tarihler
+## Önemli Tarihler
 
 
 | Tarih | Olay |
@@ -378,25 +378,25 @@ Aşağıdaki bileşenleri içeren profesyonel bir mimari diyagram:
 
 ---
 
-## ⚠️ Kurallar ve Kısıtlamalar
+## Kurallar ve Kısıtlamalar
 
-### ✅ İzin Verilenler
+### İzin Verilenler
 
 - AWS Free Tier kullanımı
 - Açık kaynak araçlar ve kütüphaneler
 - Online AWS dokümantasyonu ve tutoriallar
-- Grup içi işbirliği
+- Sınıf içi işbirliği
 - Öğretim görevlisine soru sorma
 - Her türlü yapay zeka aracına müsaade edilmiştir.
 
-### ❌ İzin Verilmeyenler
+### İzin Verilmeyenler
 
-- Başka gruplarla kod/script paylaşımı
+- Başka kişiler arası kod/script paylaşımı
 - Hazır AWS CloudFormation/Terraform template'lerini olduğu gibi kullanma (kendi yazdığınız kabul)
 - Plagiarism (intihal) - sıfır tolerans
 - AWS kredilerini kötüye kullanma, çözümlerde paylaşılması.
 
-### 💰 Maliyet Kontrolü
+### Maliyet Kontrolü
 
 **UYARI:** AWS kaynaklarını kullanırken dikkatli olun!
 
@@ -423,7 +423,7 @@ aws cloudwatch put-metric-alarm \
 
 ---
 
-## 📚 Başlangıç Adımları
+## Başlangıç Adımları
 
 ### Adım 1: AWS Account Setup
 
@@ -487,7 +487,7 @@ curl http://localhost:5889/health
 
 ---
 
-## 🆘 Yardım ve Kaynaklar
+## Yardım ve Kaynaklar
 
 ### Resmi AWS Dokümantasyonu
 
@@ -507,7 +507,7 @@ curl http://localhost:5889/health
 
 ---
 
-## ✅ Teslim Checklist
+## Teslim Checklist
 
 Teslim etmeden önce kontrol edin:
 
@@ -521,54 +521,53 @@ Teslim etmeden önce kontrol edin:
 - [ ] CloudWatch dashboard aktif
 - [ ] ALB DNS adresi README'de paylaşılmış (demo için)
 - [ ] Video demo (bonus için) yüklendi
-- [ ] Tüm grup üyelerinin katkıları README'de belirtildi
 - [ ] AWS maliyetleri kontrol edildi ve kaynaklar optimize edildi
 
 ---
 
-## 🚨 Yaygın Hatalar (Bunlardan Kaçının!)
+## Yaygın Hatalar (Bunlardan Kaçının!)
 
-1. ❌ **Security Group'ta 0.0.0.0/0 her yerde**
+1. **Security Group'ta 0.0.0.0/0 her yerde**
    - MongoDB'yi internete açmayın!
    - Sadece gerekli portlar, gerekli kaynaklara
 
-2. ❌ **MongoDB credentials hard-coded**
+2. **MongoDB credentials hard-coded**
    - Environment variables kullanın
    - Secrets Manager kullanın (bonus)
 
-3. ❌ **NAT Gateway unutulması**
+3. **NAT Gateway unutulması**
    - Private subnet instance'ları internete çıkamaz
 
-4. ❌ **Health check endpoint yanlış**
+4. **Health check endpoint yanlış**
    - `/health` endpoint'i çalışmalı
    - 200 OK dönmeli
 
-5. ❌ **Auto Scaling policy yok**
+5. **Auto Scaling policy yok**
    - Sadece ASG yeterli değil, scaling policy gerekli
 
-6. ❌ **Log'lar yok**
+6. **Log'lar yok**
    - CloudWatch'a log gönderin
    - Troubleshooting için kritik
 
-7. ❌ **Dokümantasyon eksik**
+7. **Dokümantasyon eksik**
    - README'yi ciddiye alın
    - Deployment guide test edin
 
-8. ❌ **Test edilmemiş**
+8. **Test edilmemiş**
    - Her şeyi test edin
    - Load test yapın
 
-9. ❌ **Kaynakları silmeyi unutma**
+9. **Kaynakları silmeyi unutma**
    - Proje bitince AWS kaynaklarını temizleyin
    - Billing alarm kurun
 
-10. ❌ **Son güne bırakma**
+10. **Son güne bırakma**
     - AWS deployment zaman alır
     - Debugging için süre bırakın
 
 ---
 
-## 📖 Referans Mimari
+## Referans Mimari
 
 ### Minimal Gereksinimler (70 puan için)
 
@@ -628,32 +627,25 @@ Internet
 
 ---
 
-## 💡 Son Tavsiyeler
+## Son Tavsiyeler
 
 1. **Erken başlayın** - AWS'e alışmak zaman alır
 2. **Incremental ilerleyin** - Her adımı test edin
 3. **Dokümante edin** - Her şeyi not alın
 4. **Yedekleyin** - Scriptlerinizi Git'e commit edin
 5. **Maliyeti takip edin** - Billing alarm kurun
-6. **Grup çalışın** - İş bölümü yapın
-7. **Soru sorun** - Takıldığınızda yardım isteyin
-8. **Test edin** - Her şeyi test edin, sonra tekrar test edin
-9. **Cleanup** - Bitince kaynakları silin
-10. **Eğlenin** - Bu değerli bir öğrenme deneyimi!
+6. **Soru sorun** - Takıldığınızda yardım isteyin
+7. **Test edin** - Her şeyi test edin, sonra tekrar test edin
+8. **Cleanup** - Bitince kaynakları silin
+9. **Keşfetmenin keyfini çıkartın** - Bu değerli bir öğrenme deneyimi!
 
 ---
 
-## 📧 Teslim
+## Teslim
 
 **Teslim Yöntemi:**
-1. GitHub repository URL'ini email ile gönderin: [email]
-2. Konu: `[DNS Lookup Ödevi] Grup Adı`
-3. Email içeriği:
-   - Grup üyeleri ve rolleri
-   - GitHub repository linki
-   - ALB DNS adresi (demo için)
-   - Kullanılan AWS güvenlik servisleri listesi
-   - Video demo linki (varsa)
+1. Zıp halinde ninova'ya yüklenecektir.
+2. Opsiyonel github repo'larınıza yükleyebilirsiniz, bu sizin için güzel bir referans olacaktır.
 
 **Geç Teslim Politikası:**
 - 1-24 saat geç: -10 puan
@@ -662,17 +654,15 @@ Internet
 
 ---
 
-## 🎓 Başarılar Dileriz!
+## Başarılar Dileriz!
 
 Bu proje, gerçek dünya cloud deployment deneyimi kazanmanız için tasarlanmıştır. Zorlu olabilir, ama sonunda edindiğiniz bilgi ve beceriler kariyerinizde size çok değerli olacaktır.
 
 **"The cloud is not a place, it's a way of doing IT."** - Paul Maritz
 
-Sorularınız için office hours'ta görüşmek üzere!
-
 ---
 
-**Son Güncelleme:** 7 Kasım 2025  
+**Son Güncelleme:** 14 Kasım 2025  
 **Versiyon:** 1.0  
-**Öğretim Görevlisi:** [Adınız]  
+**Öğretim Görevlisi:** Ahmet Tortumlu, Murat Sekmen  
 **Bölüm:** Siber Güvenlik MYO
