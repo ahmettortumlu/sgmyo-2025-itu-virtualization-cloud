@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS Sorgulama Uygulaması</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alert-success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            color: #155724;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            color: #856404;
+        }
+
+        .result-box {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .result-header {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .result-item {
+            margin: 12px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+
+        .result-label {
+            font-weight: 600;
+            color: #555;
+            display: inline-block;
+            min-width: 150px;
+        }
+
+        .result-value {
+            color: #333;
+            font-family: 'Courier New', monospace;
+        }
+
+        .ip-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .ip-list li {
+            padding: 8px 12px;
+            background: white;
+            margin: 5px 0;
+            border-radius: 6px;
+            border-left: 3px solid #667eea;
+            font-family: 'Courier New', monospace;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .status-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .status-error {
+            background: #dc3545;
+            color: white;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #999;
+            font-size: 0.85em;
+        }
+
+        .example {
+            font-size: 0.85em;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .result-label {
+                min-width: auto;
+                display: block;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 DNS Sorgulama</h1>
+        <p class="subtitle">Domain adreslerini sorgulayın ve sonuçları MongoDB'ye kaydedin</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/lookup">
+            <div class="form-group">
+                <label for="domain">Domain Adresi</label>
+                <input 
+                    type="text" 
+                    id="domain" 
+                    name="domain" 
+                    placeholder="örn: google.com, github.com" 
+                    required
+                    autofocus
+                    value="{% if result %}{{ result.domain }}{% endif %}"
+                >
+                <div class="example">Örnek: google.com, github.com, wikipedia.org</div>
+            </div>
+
+            <button type="submit">
+                🔎 Sorgu Yap ve Kaydet
+            </button>
+        </form>
+
+        {% if result %}
+        <div class="result-box">
+            <div class="result-header">
+                📊 Sorgu Sonucu
+            </div>
+
+            <div class="result-item">
+                <span class="result-label">Domain:</span>
+                <span class="result-value">{{ result.domain }}</span>
+            </div>
+
+            <div class="result-item">
+                <span class="result-label">Durum:</span>
+                {% if result.success %}
+                    <span class="status-badge status-success">✓ Başarılı</span>
+                {% else %}
+                    <span class="status-badge status-error">✗ Başarısız</span>
+                {% endif %}
+            </div>
+
+            {% if result.success %}
+                {% if result.canonical_name %}
+                <div class="result-item">
+                    <span class="result-label">Canonical Name:</span>
+                    <span class="result-value">{{ result.canonical_name }}</span>
+                </div>
+                {% endif %}
+
+                <div class="result-item">
+                    <span class="result-label">IP Adresleri:</span>
+                    <ul class="ip-list">
+                        {% for ip in result.ip_addresses %}
+                            <li>{{ ip }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% else %}
+                <div class="result-item">
+                    <span class="result-label">Hata:</span>
+                    <span class="result-value" style="color: #dc3545;">{{ result.error }}</span>
+                </div>
+            {% endif %}
+
+            <div class="result-item">
+                <span class="result-label">Zaman:</span>
+                <span class="result-value">{{ result.timestamp.strftime('%Y-%m-%d %H:%M:%S UTC') }}</span>
+            </div>
+
+            {% if saved %}
+            <div class="result-item">
+                <span class="result-label">Veritabanı:</span>
+                <span class="status-badge status-success">✓ Kaydedildi</span>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="footer">
+            <p>© 2025 DNS Lookup Application | MongoDB Entegrasyonlu</p>
+        </div>
+    </div>
+</body>
+</html>
+

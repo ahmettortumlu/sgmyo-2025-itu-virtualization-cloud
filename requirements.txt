@@ -1,0 +1,16 @@
+# Web Framework
+Flask==3.0.0
+Werkzeug==3.0.1
+
+# MongoDB Driver
+pymongo==4.6.1
+
+# DNS Resolution (already included in Python but good to have)
+dnspython==2.4.2
+
+# Environment Variables (optional, but useful)
+python-dotenv==1.0.0
+
+# WSGI Server for Production (optional)
+gunicorn==21.2.0
+
